@@ -2,9 +2,22 @@ public class EmployeeCompute{
       	
 	        public static final int IS_PART_TIME =1;
 		public static final int IS_FULL_TIME = 2;
-		public static int computeEmpWage(String company, int empRatePerHour,
+                private final String company;
+                private final int empRatePerHour;
+                private final int numOfWorkingDays;
+                private final int maxHoursPerMonth;
+                private int totalEmpWage;
+
+		public EmployeeCompute(String company, int empRatePerHour,
                                                 int numOfWorkingDays, int maxHoursPerMonth) {
-		// Variables
+		this.company = company;
+                this.empRatePerHour = empRatePerHour;
+                this.numOfWorkingDays = numOfWorkingDays;
+                this.maxHoursPerMonth = maxHoursPerMonth;
+                }
+                public void computeEmpWage(){
+
+                // Variables
 		int empHrs = 0;
 		int totalEmpHrs = 0;
 		int totalWorkingDays = 0;
@@ -26,12 +39,19 @@ public class EmployeeCompute{
 		System.out.println("Day#:"+ totalWorkingDays + " Emp Hr:"+ empHrs);
               }
 		int totalEmpwage = totalEmpHrs * empRatePerHour;
-                System.out.println("Total Emp Wage for company:"+company+" is: "+ totalEmpwage);
-                return totalEmpwage;       
+                 
  	}
+        @Override
+        public String toString() {
+            return "Total Emp Wage for company:"+company+" is: "+ totalEmpWage;
+      }                
         public static void main(String[] args) {
-            computeEmpWage("BigBazar", 30, 3, 15);
-            computeEmpWage("StarBazar", 20, 4, 20);
+            EmpWageBuilderObject bigbazar = new EmpWageBuilderObject ("Bigbazar" , 30, 3, 15);
+            EmpWageBuilderObject starbazar = new EmpWageBuilderObject ("Starbazar" , 10, 4, 20);
+            bigbazar.computeEmpWage();
+            System.out.println(bigbazar);
+            starbazar.computeEmpWage();
+            System.out.println(starbazar);
 
 }
 }
