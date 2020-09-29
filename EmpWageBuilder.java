@@ -30,6 +30,10 @@ public class EmpWageBuilder implements IComputeEmpWaage {
                      System.out.println(companyEmpWageList);
                 }
             }
+            @Override
+            public int getTotalWage(String company) {
+            	return companyToEmpWageMap.get(company).totalEmpWage;
+            }
             public int computeEmpWage(CompanyEmpWage companyEmpWage){
 
             // Variables
@@ -60,7 +64,7 @@ public class EmpWageBuilder implements IComputeEmpWaage {
              empWageBuilder.addCompanyEmpWage("BigBazar", 30, 4, 15);
              empWageBuilder.addCompanyEmpWage("StarBazar", 20, 2, 10);
              empWageBuilder.computeEmpWage();
-             System.out.println();
+             System.out.println("Total Wage for BigBazar Company:" + empWageBuilder.getTotalWage("BigBazar"));
              
         }
     }
